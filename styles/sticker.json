@@ -1,0 +1,23 @@
+{
+  "name": "sticker",
+  "label": "贴纸 / Sticker",
+  "preamble": "Die-cut glossy vinyl sticker style: each subject has a thick clean white die-cut border hugging its silhouette, bold saturated candy colours, a subtle glossy highlight, playful and cute, only a very soft shadow.",
+  "palette": null,
+  "cutout": "rembg",
+  "thresh": null,
+  "construction": {
+    "grid": "matched subject scale; consistent live area",
+    "stroke": "thick uniform white die-cut border around each subject",
+    "corner_radius": "border follows the silhouette",
+    "angles": "consistent",
+    "detail_budget": "one cute subject",
+    "fill_rule": "bold saturated fills with a subtle glossy highlight",
+    "color_rule": "candy palette; consistent border thickness and highlight placement",
+    "shared_parts": "consistent border weight and gloss across the set",
+    "perspective": "flat front-facing",
+    "shadow": "very soft only, none cast on background",
+    "motif": null
+  },
+  "fits": "Social, chat reactions, sticker packs.",
+  "notes": "The white die-cut border is part of the subject and is kept by cutout."
+}

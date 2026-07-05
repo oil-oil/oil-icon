@@ -1,0 +1,23 @@
+{
+  "name": "render3d",
+  "label": "3D 渲染 / 3D Render",
+  "preamble": "Glossy soft 3D-rendered icons in a flat 2D layout: puffy inflated rounded shapes, smooth matte-and-glossy material, soft studio lighting with gentle form shading, vibrant candy palette. Each object isolated with no ground or contact shadow (Spline / Figma 3D icon trend).",
+  "palette": null,
+  "cutout": "rembg",
+  "thresh": null,
+  "construction": {
+    "grid": "matched object scale; consistent live area",
+    "stroke": null,
+    "corner_radius": "puffy rounded forms",
+    "angles": "consistent viewing angle",
+    "detail_budget": "one object, reduced",
+    "fill_rule": "inflated 3D forms, matte-and-glossy material",
+    "color_rule": "vibrant candy palette; shared lighting",
+    "shared_parts": "consistent inflation and roundness",
+    "perspective": "flat 2D layout, single shared camera angle",
+    "shadow": "no ground/contact shadow; one soft studio light direction",
+    "motif": null
+  },
+  "fits": "Rewards, gamification, onboarding heroes.",
+  "notes": "Soft edges and low-contrast objects (a white cloud, etc.) make rembg required."
+}

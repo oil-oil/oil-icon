@@ -1,0 +1,23 @@
+{
+  "name": "isometric",
+  "label": "等距盒子 / Isometric",
+  "preamble": "Cute isometric 3D miniature icons: each object a tidy little isometric boxy form with soft rounded edges and clean flat-shaded facets, playful pastel palette, subtle form shading only, no cast shadow, object floating.",
+  "palette": null,
+  "cutout": "rembg",
+  "thresh": null,
+  "construction": {
+    "grid": "matched object scale; consistent live area",
+    "stroke": null,
+    "corner_radius": "soft rounded edges",
+    "angles": "shared isometric angle (2:1) for the whole set",
+    "detail_budget": "one tidy object, reduced",
+    "fill_rule": "flat-shaded facets, no outline",
+    "color_rule": "pastel palette; consistent material look",
+    "shared_parts": "consistent block construction and edge softness",
+    "perspective": "shared isometric projection",
+    "shadow": "no cast/ground shadow; form shading only",
+    "motif": null
+  },
+  "fits": "SaaS workspaces, dashboards, tool launchers.",
+  "notes": "Cuts cleanest of the 3D-leaning styles when no ground shadow is drawn."
+}

@@ -1,0 +1,23 @@
+{
+  "name": "animal-badge",
+  "label": "动物徽标 / Animal Badge",
+  "preamble": "Cute minimal flat-vector animal mascot emblems: each animal a friendly geometric character centered inside a soft rounded-square badge, limited harmonious pastel palette, thick clean shapes.",
+  "palette": null,
+  "cutout": "rembg",
+  "thresh": null,
+  "construction": {
+    "grid": "shared badge shape and size; centered character",
+    "stroke": null,
+    "corner_radius": "consistent badge corner radius",
+    "angles": "soft organic, consistent",
+    "detail_budget": "one animal character, matched detail",
+    "fill_rule": "flat-vector character on a soft rounded-square tile",
+    "color_rule": "limited harmonious pastel palette; one tint per tile",
+    "shared_parts": "consistent facial proportions and character style; identical badge frame",
+    "perspective": "flat front-facing character",
+    "shadow": "none",
+    "motif": null
+  },
+  "fits": "Avatar pickers, kids' and social products.",
+  "notes": "Output is a coloured badge tile (the badge is the silhouette), not an isolated subject."
+}

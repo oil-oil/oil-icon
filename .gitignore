@@ -1,0 +1,10 @@
+.DS_Store
+.venv/
+__pycache__/
+*.py[cod]
+raw/
+out/
+*.png
+*.jpg
+*.jpeg
+*.webp

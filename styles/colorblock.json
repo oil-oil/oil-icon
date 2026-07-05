@@ -1,0 +1,28 @@
+{
+  "name": "colorblock",
+  "label": "撞色 / Colorblock",
+  "preamble": "Bold flat colour-blocking / duotone icons: each icon uses 2 to 3 of the fixed palette colours as overlapping geometric shapes, high but harmonious saturation, Memphis vibe.",
+  "palette": [
+    "#ff3b54",
+    "#2f6fed",
+    "#ffc93c",
+    "#17b890"
+  ],
+  "cutout": "floodfill",
+  "thresh": 30,
+  "construction": {
+    "grid": "24-unit keyline; live area ~80%; optical sizing",
+    "stroke": null,
+    "corner_radius": "consistent soft radius",
+    "angles": "45° increments",
+    "detail_budget": "one core idea, <=3-4 shapes",
+    "fill_rule": "flat colour blocks, 2-3 palette colours per icon, overlapping geometric shapes",
+    "color_rule": "only the locked palette; keep colour roles consistent",
+    "shared_parts": "reuse one canonical shape per recurring concept",
+    "perspective": "flat front-facing",
+    "shadow": "none",
+    "motif": null
+  },
+  "fits": "Kids' learning, creative and playful products.",
+  "notes": "Lock the palette hex or the colours drift between generations."
+}

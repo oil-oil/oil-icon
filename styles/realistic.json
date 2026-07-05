@@ -1,0 +1,23 @@
+{
+  "name": "realistic",
+  "label": "真实实物 / Realistic",
+  "preamble": "Photorealistic studio product renders: realistic materials, textures, lighting and soft reflections, crisp high detail, clean e-commerce catalog look. Each object at a similar scale, centered and isolated.",
+  "palette": null,
+  "cutout": "rembg",
+  "thresh": null,
+  "construction": {
+    "grid": "matched product scale; centered and isolated",
+    "stroke": null,
+    "corner_radius": null,
+    "angles": "consistent camera angle",
+    "detail_budget": "one product, isolated",
+    "fill_rule": "photorealistic materials, textures and reflections",
+    "color_rule": "natural product colours; uniform studio lighting",
+    "shared_parts": "consistent scale and lighting across the set",
+    "perspective": "consistent camera angle",
+    "shadow": "perfectly flat grey backdrop, no gradient or vignette",
+    "motif": null
+  },
+  "fits": "E-commerce product tiles, landing heroes. These are product images more than icons.",
+  "notes": "Insist on a perfectly flat grey backdrop with no gradient or vignette. rembg cuts objects and people cleanly."
+}

@@ -1,0 +1,25 @@
+{
+  "name": "filled",
+  "label": "面性单色 / Filled",
+  "preamble": "Solid flat filled glyphs in ONE single colour, no outlines, no gradients, gently rounded corners. A calm, restrained monochrome brand set — every icon the exact same colour.",
+  "palette": [
+    "#2f6fed"
+  ],
+  "cutout": "floodfill",
+  "thresh": 30,
+  "construction": {
+    "grid": "24-unit keyline; live area ~80%, ~10% padding; optical sizing",
+    "stroke": null,
+    "corner_radius": "consistent soft radius",
+    "angles": "45° increments",
+    "detail_budget": "one core idea, <=3-4 shapes",
+    "fill_rule": "single solid fill, no outline; interior holes kept open",
+    "color_rule": "one colour across the whole set",
+    "shared_parts": "reuse one canonical shape per recurring concept",
+    "perspective": "flat front-facing",
+    "shadow": "none",
+    "motif": null
+  },
+  "fits": "Mobile app navigation, tab bars.",
+  "notes": "Large filled shapes read heavy in bulk — reserve for small or sparse placements, not grids of cards. Lock the single hex or the model adds extra colours."
+}

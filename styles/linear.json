@@ -1,0 +1,25 @@
+{
+  "name": "linear",
+  "label": "线性 / Line",
+  "preamble": "Minimal line / outline icons: uniform medium stroke weight, rounded caps and joins, no fill, drawn in a single dark colour. Clean, refined, geometric — like a Feather / Phosphor set.",
+  "palette": [
+    "#2b2b2b"
+  ],
+  "cutout": "floodfill",
+  "thresh": 30,
+  "construction": {
+    "grid": "24-unit keyline; live area ~80%, ~10% padding; optical sizing so circles read equal to squares",
+    "stroke": "uniform 2 units, rounded caps and joins",
+    "corner_radius": "consistent small outer radius",
+    "angles": "geometry on 45° increments",
+    "detail_budget": "one core idea, <=3-4 elements, generous negative space",
+    "fill_rule": "outline only, no fill",
+    "color_rule": "single dark line colour",
+    "shared_parts": "reuse one canonical shape per recurring concept (person, document, frame, plus)",
+    "perspective": "flat front-facing",
+    "shadow": "none",
+    "motif": null
+  },
+  "fits": "Utility tools, settings, content-dense UI.",
+  "notes": "The lightest and most reproducible style; sits well beside vector line-icon libraries."
+}

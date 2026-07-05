@@ -1,0 +1,23 @@
+{
+  "name": "cartoon",
+  "label": "卡通 / Cartoon",
+  "preamble": "Playful sticker-style cartoon icons: thick rounded clean dark outlines, cute friendly shapes, flat colour fills with only subtle internal shading, vibrant soft palette. No drop shadow and no cast shadow.",
+  "palette": null,
+  "cutout": "rembg",
+  "thresh": null,
+  "construction": {
+    "grid": "consistent live area and padding; optical sizing",
+    "stroke": "thick uniform rounded dark outline",
+    "corner_radius": "rounded friendly forms",
+    "angles": "soft organic, consistent",
+    "detail_budget": "one cute subject, matched detail level",
+    "fill_rule": "flat fills with subtle internal shading inside outlines",
+    "color_rule": "vibrant soft palette; consistent colours per concept",
+    "shared_parts": "consistent character style across the set",
+    "perspective": "flat front-facing",
+    "shadow": "none cast on background (internal shading only)",
+    "motif": null
+  },
+  "fits": "Casual games, entertainment.",
+  "notes": "Soft outlines and internal shading — always rembg cutout."
+}
