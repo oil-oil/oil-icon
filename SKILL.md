@@ -20,7 +20,7 @@ Not for: a single one-off icon (draw an SVG), or dense functional UI glyphs at 1
 ## Workflow
 
 1. **Choose the style.** Either pick a built-in from `styles/` (table below), or **match the user's brand** by reading their project's design tokens / assets and deriving a custom style-spec — see `reference/style-adaptation.md`. Freeze the result as a style-spec with the same fields as the built-in JSONs; the frozen spec is what keeps every future batch identical.
-2. **List the icons.** Write each concept as `name — short concrete metaphor` (e.g. `settlement — a wallet with a coin`). One clear idea per icon; keep the detail level consistent across the set. Batch into sheets of **16**, or **9** when you want maximum slicing stability.
+2. **List the icons.** Write each concept as `name — short concrete metaphor` (e.g. `settlement — a wallet with a coin`). One clear idea per icon; keep the detail level consistent across the set. Batch into sheets of **16**, or **9** when you want maximum slicing stability. If the user asks for an exact count below 16, still use a **4x4 / 16-cell sheet**: place the requested icons first in row-major order, then explicitly ask the remaining cells to stay empty grey background.
 3. **Compose the prompt.** `style.preamble` + the style's `construction` fields (as short guidance) + palette-lock line + numbered metaphors + the fixed composition text — see `reference/prompt-template.md` and `reference/construction.md`.
 4. **Generate the sheet(s).** Choose an image provider by capability, in order (see `reference/image-providers.md`) — never assume Codex is present:
    1. **Built-in / host imagegen first** — if the running agent already has a callable image-generation tool, including Codex's built-in `image_gen` tool or the `imagegen` skill, call it directly. Do not delegate to external Codex CLI just to reach imagegen from another process.
@@ -28,7 +28,7 @@ Not for: a single one-off icon (draw an SVG), or dense functional UI glyphs at 1
    3. **External API fallback** — only if neither of the above exists, ask the user which image API + key to use; for OpenAI Images, `scripts/gen_image.py --prompt "…" --out raw/<style>.png` is ready.
    Save or copy each generated sheet to `raw/<style>.png` on flat grey `#808080`. Built-in imagegen may save under `$CODEX_HOME/generated_images/...`; after generation, move or copy the selected PNG into the oil-icon `raw/` folder. One sheet = one generation = one consistent style; a provider only has to turn the prompt into a grey-background PNG.
 5. **Slice.** Run `scripts/setup.sh` once, then:
-   `.venv/bin/python3 scripts/slice_icons.py <raw>.png <outdir> --mode <cutout> [--thresh N] [--grid 4]`
+   `.venv/bin/python3 scripts/slice_icons.py <raw>.png <outdir> --mode <cutout> [--thresh N] [--grid 4] [--count N]`
    using the style's `cutout` mode (`floodfill` for flat/hard-edge, `rembg` for soft / 3D / glossy / photo).
 6. **QA (mandatory).** Composite the sliced PNGs onto a contrasting colour (e.g. magenta) and check every icon for (a) a fragment bled in from a neighbouring cell, (b) leftover grey, and (c) consistency against the style's `construction` — uniform stroke, one radius, matched detail level, shared parts, motif present, single perspective, and no accent out-weighting the defining element (in line styles the accent must be lighter and smaller than the stroke). Re-slice or regenerate any that fail — never ship an icon carrying part of the one above it.
 7. **Deliver** the transparent PNGs, organized and named.

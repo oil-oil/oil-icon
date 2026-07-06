@@ -70,12 +70,17 @@ def main():
     ap.add_argument("--grid", type=int, default=4)
     ap.add_argument("--thresh", type=int, default=24)
     ap.add_argument("--size", type=int, default=512)
+    ap.add_argument("--count", type=int, default=None,
+                    help="number of real icons to export from row-major cells; later cells are intentional blanks")
     a = ap.parse_args()
 
     outdir = Path(a.outdir); outdir.mkdir(parents=True, exist_ok=True)
     im = Image.open(a.sheet).convert("RGB")
     W, H = im.size
     g = a.grid
+    total_cells = g * g
+    if a.count is not None and not (1 <= a.count <= total_cells):
+        ap.error(f"--count must be between 1 and {total_cells}")
     cw, ch = W // g, H // g
     pad = int(0.06 * min(cw, ch))     # 略微外扩，兜住漂出格子的图标
     session = None
@@ -87,6 +92,9 @@ def main():
     idx = 1
     for r in range(g):
         for c in range(g):
+            if a.count is not None and idx > a.count:
+                print(f"{a.sheet} -> {a.outdir}  mode={a.mode}  cells={idx-1}/{total_cells}  skipped_blank={total_cells - (idx - 1)}" + (f"  ⚠ {warned}" if warned else "  ✓"))
+                return
             x0, y0 = c * cw, r * ch
             px0, py0 = max(0, x0 - pad), max(0, y0 - pad)
             px1, py1 = min(W, x0 + cw + pad), min(H, y0 + ch + pad)
