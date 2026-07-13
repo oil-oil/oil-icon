@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<title>oil-icon README hero</title>
+<style>
+  :root {
+    --ink: #263232;
+    --muted: #74807d;
+    --paper: #f4f2ec;
+    --teal: #176b70;
+    --aqua: #62c3bc;
+    --orange: #f0a45d;
+    --violet: #7568d8;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    width: 1200px;
+    height: 1200px;
+    overflow: hidden;
+  }
+
+  body {
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", sans-serif;
+    background: transparent;
+  }
+
+  .hero {
+    position: relative;
+    width: 1200px;
+    height: 1200px;
+    overflow: hidden;
+    border-radius: 32px;
+    background:
+      linear-gradient(rgba(38, 50, 50, .045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(38, 50, 50, .045) 1px, transparent 1px),
+      var(--paper);
+    background-size: 40px 40px;
+  }
+
+  .copy {
+    position: absolute;
+    z-index: 20;
+    left: 72px;
+    top: 56px;
+  }
+
+  .eyebrow {
+    color: var(--teal);
+    font-size: 18px;
+    font-weight: 760;
+    letter-spacing: 3px;
+  }
+
+  .rule {
+    width: 52px;
+    height: 6px;
+    margin-top: 16px;
+    border-radius: 99px;
+    background: var(--orange);
+  }
+
+  h1 {
+    margin: 22px 0 0;
+    font-size: 92px;
+    line-height: .95;
+    font-weight: 800;
+    letter-spacing: -5px;
+  }
+
+  .tagline {
+    margin-top: 24px;
+    font-size: 34px;
+    line-height: 1.3;
+    font-weight: 650;
+  }
+
+  .tagline strong {
+    position: relative;
+    font-weight: inherit;
+  }
+
+  .tagline strong::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: -4px;
+    right: -4px;
+    bottom: 1px;
+    height: 17px;
+    border-radius: 4px;
+    background: rgba(98, 195, 188, .33);
+  }
+
+  .meta {
+    margin-top: 22px;
+    color: var(--muted);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+  }
+
+  .mini-grid {
+    position: absolute;
+    z-index: 18;
+    right: 76px;
+    top: 62px;
+    display: grid;
+    grid-template-columns: repeat(4, 42px);
+    gap: 8px;
+    padding: 20px;
+    border: 1px solid rgba(38, 50, 50, .10);
+    border-radius: 24px;
+    background: rgba(255, 255, 255, .92);
+    box-shadow: 0 8px 22px rgba(28, 44, 43, .08);
+    transform: rotate(4deg);
+  }
+
+  .mini-grid i { width: 42px; height: 42px; border-radius: 12px; }
+
+  .board {
+    position: absolute;
+    width: 616px;
+    height: 618px;
+    padding: 24px;
+    border: 1px solid rgba(38, 50, 50, .11);
+    border-radius: 26px;
+    background: rgba(255, 255, 255, .95);
+    box-shadow: 0 10px 28px rgba(28, 44, 43, .09);
+  }
+
+  .board.soft {
+    z-index: 4;
+    left: 8px;
+    top: 432px;
+    transform: rotate(-5.2deg);
+  }
+
+  .board.iso {
+    z-index: 7;
+    left: 574px;
+    top: 568px;
+    transform: rotate(4.2deg);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+
+  .icon {
+    height: 132px;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    border-radius: 16px;
+  }
+
+  .soft .icon { background: #fbf6e9; }
+  .iso .icon { background: #edf6f4; }
+
+  .icon img {
+    width: 116px;
+    height: 116px;
+    object-fit: contain;
+  }
+</style>
+<main class="hero">
+  <section class="copy">
+    <div class="eyebrow">OIL · ICON SYSTEM</div>
+    <div class="rule"></div>
+    <h1>oil-icon</h1>
+    <div class="tagline"><strong>一次生成一整套，</strong><br>让每个图标都像来自同一个设计师。</div>
+    <div class="meta">ONE SHEET · ONE STYLE · 16 TRANSPARENT PNGS</div>
+  </section>
+
+  <div class="mini-grid" aria-hidden="true">
+    <i style="background:#176b70"></i><i style="background:#62c3bc"></i><i style="background:#f0a45d"></i><i style="background:#7568d8"></i>
+    <i style="background:#e9967a"></i><i style="background:#8eaa8a"></i><i style="background:#7568d8"></i><i style="background:#f4c84b"></i>
+    <i style="background:#62c3bc"></i><i style="background:#176b70"></i><i style="background:#f6ebdd"></i><i style="background:#f0a45d"></i>
+    <i style="background:#f4c84b"></i><i style="background:#e9967a"></i><i style="background:#8eaa8a"></i><i style="background:#62c3bc"></i>
+  </div>
+
+  <section class="board soft"><div class="grid" id="soft-grid"></div></section>
+  <section class="board iso"><div class="grid" id="iso-grid"></div></section>
+</main>
+<script>
+  const fill = (id, folder) => {
+    document.getElementById(id).innerHTML = Array.from({ length: 16 }, (_, i) => {
+      const n = String(i + 1).padStart(2, '0');
+      return `<div class="icon"><img src="../${folder}/${n}.png" alt=""></div>`;
+    }).join('');
+  };
+  fill('soft-grid', 'showcase-soft3d');
+  fill('iso-grid', 'showcase-isometric');
+</script>
+</html>

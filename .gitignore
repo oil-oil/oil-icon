@@ -8,3 +8,6 @@ out/
 *.jpg
 *.jpeg
 *.webp
+!assets/readme/*.png
+!assets/readme/showcase-soft3d/*.png
+!assets/readme/showcase-isometric/*.png
