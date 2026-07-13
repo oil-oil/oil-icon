@@ -116,6 +116,10 @@ npx skills add oil-oil/oil-icon
 
 </details>
 
+<p align="center">
+  <a href="https://github.com/oil-oil/beautify-github-readme"><img src="./assets/readme/made-with-beautify.svg" width="300" alt="README made with beautify-github-readme"></a>
+</p>
+
 ## License
 
 MIT
