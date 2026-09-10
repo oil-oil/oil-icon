@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "profiles": {
+    "default": [
+      {
+        "manifest": "default.json",
+        "env": "OPENAI_API_KEY"
+      }
+    ]
+  }
+}
