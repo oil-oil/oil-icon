@@ -123,3 +123,15 @@ npx skills add oil-oil/oil-icon
 ## License
 
 MIT
+
+## 配置、依赖与使用边界
+
+依赖已授权的生图工具；切图需 scripts/setup.sh 安装的 Python 图像依赖。软边缘风格按需使用 rembg。无需把 Key 发到聊天。
+
+产物保存在任务目录。9 格使用 --grid 3，16 格使用 --grid 4；小尺寸功能图标优先矢量库。一次生成不保证一致性。
+
+使用示例：
+
+```text
+用 oil-icon 为这六个功能画一组配套图标。
+```

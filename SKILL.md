@@ -7,26 +7,20 @@ description: Generate a cohesive set of transparent-background icons in a chosen
 
 Generate a **set** of icons that share one visual style, output as transparent PNGs.
 
-Image generation runs on a flat grey backdrop as a 4×4 sheet — 16 icons in one generation, so the set is stylistically consistent by construction — then each cell is sliced out and background-removed.
+Image generation runs on a flat grey backdrop as a 4×4 sheet — 16 icons in one generation, 有助于统一风格，但仍需逐个检查 — then each cell is sliced out and background-removed.
 
-Claude owns the design decisions (which style, which palette, which metaphors, whether to match a brand); image generation and slicing are mechanical steps.
-
-## When to use / not
-
-Use for: an icon pack, a product or brand icon set, spot / feature / marketing / empty-state / category icons, or icons matching a specific style or a project's design tokens.
-
-Not for: a single one-off icon (draw an SVG), or dense functional UI glyphs at 16–24px (use a vector icon library such as lucide — raster icons are not crisp at tiny sizes). Generated icons are best at larger "spot" sizes.
+Agent owns the design decisions (which style, which palette, which metaphors, whether to match a brand); image generation and slicing are mechanical steps.
 
 ## Workflow
 
-1. **Choose the style.** Either pick a built-in from `styles/` (table below), or **match the user's brand** by reading their project's design tokens / assets and deriving a custom style-spec — see `reference/style-adaptation.md`. Freeze the result as a style-spec with the same fields as the built-in JSONs; the frozen spec is what keeps every future batch identical.
-2. **List the icons.** Write each concept as `name — short concrete metaphor` (e.g. `settlement — a wallet with a coin`). One clear idea per icon; keep the detail level consistent across the set. Batch into sheets of **16**, or **9** when you want maximum slicing stability. If the user asks for an exact count below 16, still use a **4x4 / 16-cell sheet**: place the requested icons first in row-major order, then explicitly ask the remaining cells to stay empty grey background.
+1. **Choose the style.** Either pick a built-in from `styles/` (table below), or **match the user's brand** by reading their project's design tokens / assets and deriving a custom style-spec — see `reference/style-adaptation.md`. Freeze the result as a style-spec with the same fields as the built-in JSONs; 后续批次复用同一规范，并检查生成偏差.
+2. **List the icons.** Write each concept as `name — short concrete metaphor` (e.g. `settlement — a wallet with a coin`). One clear idea per icon; keep the detail level consistent across the set. 默认每张 **16** 格；明确选择 **9** 格时，提示词使用 3×3，切图命令必须同时传 `--grid 3`。 If the user asks for an exact count below 16, still use a **4x4 / 16-cell sheet**: place the requested icons first in row-major order, then explicitly ask the remaining cells to stay empty grey background.
 3. **Compose the prompt.** `style.preamble` + the style's `construction` fields (as short guidance) + palette-lock line + numbered metaphors + the fixed composition text — see `reference/prompt-template.md` and `reference/construction.md`.
 4. **Generate the sheet(s).** Choose an image provider by capability, in order (see `reference/image-providers.md`) — never assume Codex is present:
    1. **Built-in / host imagegen first** — if the running agent already has a callable image-generation tool, including Codex's built-in `image_gen` tool or the `imagegen` skill, call it directly. Do not delegate to external Codex CLI just to reach imagegen from another process.
-   2. **Codex CLI fallback** — only if this agent has no callable image-generation tool, and Codex is available (`~/.claude/skills/codex/scripts/ask_codex.sh` or `codex` on PATH), delegate generation to it.
-   3. **External API fallback** — only if neither of the above exists, ask the user which image API + key to use; for OpenAI Images, `scripts/gen_image.py --prompt "…" --out raw/<style>.png` is ready.
-   Save or copy each generated sheet to `raw/<style>.png` on flat grey `#808080`. Built-in imagegen may save under `$CODEX_HOME/generated_images/...`; after generation, move or copy the selected PNG into the oil-icon `raw/` folder. One sheet = one generation = one consistent style; a provider only has to turn the prompt into a grey-background PNG.
+   2. **Codex CLI fallback** — only if this agent has no callable image-generation tool, and Codex is available （从可用 Skill 清单定位 codex，或使用 PATH 中已有的 codex）, delegate generation to it.
+   3. **External API fallback** — only if neither of the above exists, 沿用用户已授权的供应商；缺少凭据时使用供应商安全登录入口，不索要聊天中的 Key; for OpenAI Images, `scripts/gen_image.py --prompt "…" --out raw/<style>.png` is ready.
+   Save or copy each generated sheet to `raw/<style>.png` on flat grey `#808080`. Built-in imagegen may save under `$CODEX_HOME/generated_images/...`; after generation, move or copy the selected PNG into the task output `raw/` folder. 同一张图更容易保持共同风格，但仍须逐个验收，不能把一次生成视为一致性保证； a provider only has to turn the prompt into a grey-background PNG.
 5. **Slice.** Run `scripts/setup.sh` once, then:
    `.venv/bin/python3 scripts/slice_icons.py <raw>.png <outdir> --mode <cutout> [--thresh N] [--grid 4] [--count N]`
    using the style's `cutout` mode (`floodfill` for flat/hard-edge, `rembg` for soft / 3D / glossy / photo).
