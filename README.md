@@ -106,6 +106,8 @@ npx skills add oil-oil/oil-icon
 
 `oil-icon` 会优先使用 Agent 当前可用的图片生成能力；没有内置图片工具时，再根据环境选择其他生成方式。切图与检查流程保持一致。
 
+做页面和素材时怎么生成透明底图片、怎么搭配整体视觉风格，也可以参考 Oil Book 里的[《如何使用 AI 做出有高级感的设计》](https://book.oiloil.org/articles/ai-ui-design?utm_source=github&utm_medium=referral&utm_campaign=oil-icon-readme)与译文[《如何生成可复用的透明背景设计素材》](https://book.oiloil.org/articles/transparent-image-assets-cookbook?utm_source=github&utm_medium=referral&utm_campaign=oil-icon-readme)。
+
 <details>
 <summary><strong>仓库里有什么</strong></summary>
 
